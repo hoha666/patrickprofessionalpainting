@@ -1,0 +1,189 @@
+﻿@model PatrickWebsiteCore.Data.HomePage
+
+@{
+    ViewData["Title"] = "Site Global SEO Settings";
+    Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Site Global SEO Settings</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="Id" type="hidden" />
+            <input asp-for="MainVideoURL" type="hidden" />
+            <input asp-for="BrandsVideoURL" type="hidden" />
+            <input asp-for="FavIconURL" type="hidden" />
+            <input asp-for="OgImageURL" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="SiteName" class="control-label">Website Name</label>
+                <input asp-for="SiteName" class="form-control" />
+                <span asp-validation-for="SiteName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteSlogan" class="control-label">Company Slogan</label>
+                <input asp-for="SiteSlogan" class="form-control" />
+                <span asp-validation-for="SiteSlogan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteTitle" class="control-label">Title of Home page</label>
+                <input asp-for="SiteTitle" class="form-control" />
+                <span asp-validation-for="SiteTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteMeta" class="control-label">Meta Description of Home page</label>
+                <input asp-for="SiteMeta" class="form-control" />
+                <span asp-validation-for="SiteMeta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OgTitle" class="control-label">Title for Introduction in social media</label>
+                <input asp-for="OgTitle" class="form-control" />
+                <span asp-validation-for="OgTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OgType" class="control-label">OG Type (Don't Change if you unsure)</label>
+                <input asp-for="OgType" class="form-control" />
+                <span asp-validation-for="OgType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OgSiteURL" class="control-label">Website base URL for Search Engines (OG Site URL)</label>
+                <input asp-for="OgSiteURL" class="form-control" />
+                <span asp-validation-for="OgSiteURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OgImageUpload" class="control-label">Logo for social networks (OgImageUpload only *.jpg or *.png) </label>
+                <input asp-for="OgImageUpload" class="form-control" />
+                <span asp-validation-for="OgImageUpload" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainVideoUpload" class="control-label">Home page main video (only *.mp4 1920*1080)</label>
+                <input asp-for="MainVideoUpload" class="form-control" />
+                <span asp-validation-for="MainVideoUpload" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrandsVideoUpload" class="control-label">Brands Video (only *.mp4 1920*1080)</label>
+                <input asp-for="BrandsVideoUpload" class="form-control" />
+                <span asp-validation-for="BrandsVideoUpload" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FavIconUpload" class="control-label">FavIcon (Only *.jpg  32*32 pixel)</label>
+                <input asp-for="FavIconUpload" class="form-control" />
+                <span asp-validation-for="FavIconUpload" class="text-danger"></span>
+            </div>
+
+            <div class="col-sm-12 form-group">
+                <input autocomplete="off" type="button" value="Save Changes" class="btn btn-success" id="createButton" onclick="PushData()" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        function PushData() {
+            var formData = new FormData();
+            if ($('#Id').val() != 'undefined') {
+                formData.append('Id', $('#Id').val());
+            }
+            if ($('#MainVideoURL').val() != 'undefined') {
+                formData.append('MainVideoURL', $('#MainVideoURL').val());
+            }
+            if ($('#BrandsVideoURL').val() != 'undefined') {
+                formData.append('BrandsVideoURL', $('#BrandsVideoURL').val());
+            }
+            if ($('#FavIconURL').val() != 'undefined') {
+                formData.append('FavIconURL', $('#FavIconURL').val());
+            }
+            if ($('#OgImageURL').val() != 'undefined') {
+                formData.append('OgImageURL', $('#OgImageURL').val());
+            }
+            if ($('#SiteName').val() != 'undefined') {
+                formData.append('SiteName', $('#SiteName').val());
+            }
+            if ($('#SiteSlogan').val() != 'undefined') {
+                formData.append('SiteSlogan', $('#SiteSlogan').val());
+            }
+            if ($('#SiteTitle').val() != 'undefined') {
+                formData.append('SiteTitle', $('#SiteTitle').val());
+            }
+            if ($('#SiteMeta').val() != 'undefined') {
+                formData.append('SiteMeta', $('#SiteMeta').val());
+            }
+            if ($('#OgTitle').val() != 'undefined') {
+                formData.append('OgTitle', $('#OgTitle').val());
+            }
+            if ($('#OgType').val() != 'undefined') {
+                formData.append('OgType', $('#OgType').val());
+            }
+            if ($('#OgSiteURL').val() != 'undefined') {
+                formData.append('OgSiteURL', $('#OgSiteURL').val());
+            }
+
+            if ($('#OgImageUpload').val() != 'undefined') {
+                var file = document.getElementById('OgImageUpload').files[0];
+                formData.append('OgImageUpload', file);
+            }
+            if ($('#MainVideoUpload').val() != 'undefined') {
+                var file = document.getElementById('MainVideoUpload').files[0];
+                formData.append('MainVideoUpload', file);
+            }
+            if ($('#BrandsVideoUpload').val() != 'undefined') {
+                var file = document.getElementById('BrandsVideoUpload').files[0];
+                formData.append('BrandsVideoUpload', file);
+            }
+            if ($('#FavIconUpload').val() != 'undefined') {
+                var file = document.getElementById('FavIconUpload').files[0];
+                formData.append('FavIconUpload', file);
+            }
+
+
+            $.ajax({
+                type: "POST",
+                url: "/homepages/edit",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    data = JSON.parse(data);
+                    alert(data.message);
+                    if (data.redirectUrl !== undefined) {
+                        window.location.replace(data.redirectUrl);
+                    } else {
+                        // No redirect found, do something else
+                    }
+                },
+                error: function (jqXHR, exception) {
+                    var msg = "";
+                    if (jqXHR.status === 0)
+                        msg = 'ارتباط قطع می باشد';
+                    else if (jqXHR.status === 404)
+                        msg = 'ارتباط قطع می باشد';
+                    else if (jqXHR.status === 404)
+                        msg = 'مسیر درخواست اشتباه است';
+                    else if (jqXHR.status === 500)
+                        msg = 'خطا فنی';
+                    else if (exception === 'parsererror')
+                        msg = 'فرمت اطلاعات صحیح نمی باشد';
+                    else if (exception === 'timeout')
+                        msg = 'خطا در مدت زمان انجام عملیات';
+                    else if (exception === 'abort')
+                        msg = 'درخواست رد شده است';
+                    else
+                        msg = jqXHR.responseText;
+                    alert(msg);
+                    window.location.replace("/homepages");
+
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    @await Component.InvokeAsync("LayoutSettings", @ViewData["Title"])
+
+    @RenderSection("Tags", required: false)
+
+    <link href="~/css/bundleb.css" rel="stylesheet" />
+    <link href="~/css/chunk.css" rel="stylesheet" />
+    <link href="~/css/brand-slider.css" rel="stylesheet" />
+    <link href="~/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/css/custom.css" rel="stylesheet" />
+    <link href="~/css/StyleSheet1.css" rel="stylesheet" />
+    @RenderSection("MyStyles", required: false)
+</head>
+<body>
+    <div id="main-container">
+        <header-site>
+            <nav role="navigation" slot="header-target">
+                <ul class="header__target">
+                    <li class="header__links"><a href="/Home/Brands" target="_blank">Brands</a></li>
+                    <li class="header__links"><a href="/Home/Terms" target="_blank">Terms of Service</a></li>
+                </ul>
+            </nav>
+
+            <a href="~/Home" slot="header-logo">
+                <img src="~/images/patrick.png">
+            </a>
+
+            <nav role="navigation" class="mega-menu" aria-label="Main navigation" slot="navigation"
+                 slot-scope="headerProps">
+                <mega-menu>
+                    <li class="mega-menu__level-1-item "><a href="/paintingservices">Services</a> </li>
+                    <li class="mega-menu__level-1-item "><a href="/home#projects">Projects</a></li>
+                    <li class="mega-menu__level-1-item "><a href="/home#customerStory">Stories</a></li>
+                    <li class="mega-menu__level-1-item "><a href="/PaintingGallery">Gallery</a></li>
+                    <li class="mega-menu__level-1-item "><a href="/About">About</a></li>
+                    <li class="mega-menu__level-1-item "><a href="/Contact">Contact</a></li>
+                </mega-menu>
+            </nav>
+        </header-site>
+
+        <main id="main">
+            @RenderBody()
+        </main>
+
+        <div class="footer container container--large">
+            <div class="footer__top container--medium">
+                <div class="footer__left">
+                    <ul class="footer__menu">
+                        <li class="footer__item footer__item--menu"><a href="/Home">Home</a> </li>
+                        <li class="footer__item footer__item--menu"><a href="/PaintingServices">Services</a> </li>
+                        <li class="footer__item footer__item--menu"><a href="/PaintingGallery">Gallery</a></li>
+                        <li class="footer__item footer__item--menu"><a href="/About">About</a></li>
+                        <li class="footer__item footer__item--menu"><a href="/Contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__right">
+                    <ul class="footer__target ">
+                        <li class="footer__item footer__item--target"><a href="~/Home/Brands" target="_blank">Brands</a></li>                        
+                        <li class="footer__item footer__item--target">
+                            <a href="~/Home/Terms" target="_blank">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom container--medium ">
+                <footer role="contentinfo" class="footer__legal">
+                    <ul class="footer__policy ">
+
+                        <li class="footer__item footer__item--policy"><a href="/Home/terms">Term of use</a> </li>
+                        <li class="footer__item footer__item--policy"><a href="# ">Privacy Policy</a> </li>
+                        <li class="footer__item footer__item--policy">
+                            <a href="# ">Business Customer Privacy Policy</a>
+                        </li>
+                    </ul>
+                    <a href="#" class="footer__accessibility ">Accessibility assessment</a>
+                </footer>
+                <ul class="footer__social ">
+                    <li class="footer__item footer__item--social">
+                        <a href="https://www.facebook.com/patrickpainting.com.au/" target="_blank " class="social-icon">
+                            <span class="icon icon-facebook "
+                                  aria-hidden="true"></span><span class="off-screen ">facebook</span>
+                        </a>
+                    </li>
+                    <li class="footer__item footer__item--social">
+                        <a href="# " target="_blank " class="social-icon">
+                            <span class="icon icon-twitter "
+                                  aria-hidden="true"></span><span class="off-screen ">twitter</span>
+                        </a>
+                    </li>
+                    <li class="footer__item footer__item--social ">
+                        <a href="https://instagram.com/patrickpainting.pty.ltd?igshid=15mxp0gdlii3v" target="_blank " class="social-icon">
+                            <span class="icon icon-instagram "
+                                  aria-hidden="true"></span><span class="off-screen ">instagram</span>
+                        </a>
+                    </li>
+                    <li class="footer__item footer__item--social">
+                        <a href="# " target="_blank " class="social-icon">
+                            <span class="icon icon-linkedin "
+                                  aria-hidden="true"></span><span class="off-screen ">linkedin</span>
+                        </a>
+                    </li>
+                    <li class="footer__item footer__item--social">
+                        <a href="# " target="_blank " class="social-icon">
+                            <span class="icon icon-youtube "
+                                  aria-hidden="true"></span><span class="off-screen ">youtube</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/vendors.bundleb.js"></script>
+    <script src="~/js/bundleb.js"></script>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/custom.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

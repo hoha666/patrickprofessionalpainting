@@ -1,0 +1,62 @@
+﻿@model PatrickWebsiteCore.Data.Project;
+@{ ViewData["Title"] = Model.Title.ToString();
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@section Tags {
+    <meta name="description" content="@Model.Brief" />
+}
+
+<div id="contenth">
+
+
+    <div class="container container--is-maxwidth">
+
+        <section class="container hero hero--stage hero--bottom hero--left" v-heroanim>
+            <responsive-image class="image image--hero hero__image">
+                <img src="@Model.PicURL" alt="" class="image image--hero hero__image">
+            </responsive-image>
+            <div class="hero__container container--medium">
+                <div class="hero__content" data-tag-wrapper>
+                    <h1 class="hero__title halesworth">
+                        @Model.Title
+                    </h1>
+                    <a class="hero__btn btn btn--white" v-tag:useractionevent.dom=""
+                       data-tag-label="Patrick Professional Painting" data-tag-category="content"
+                       data-tag-action="select::hero stage">
+                        <span class="btn__wrapper">
+                            From : @Model.StartDate.ToShortDateString() TO : @Model.EndDate.ToShortDateString()
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="container--large ">
+            <div class="container--medium">
+
+                <div class="copy-block container--small content" v-animate="{ cssClass: 'fadein--bottom' }">
+                    <div class="copy-block__title copy-block--fullwidth">
+                        <h2 class="heading--2 --serif" style="text-align: center;">@Model.Brief</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container--large ">
+            <div class="container--medium">
+
+                <div class="copy-block container--small content" v-animate="{ cssClass: 'fadein--bottom' }">
+                    <div class="copy-block__title">
+                        <img src="@Model.IconURL" style="border-radius:5px;" />
+                    </div>
+                    <div class="copy-block__text" style="text-align:justify;">
+                        @Model.Introduction
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

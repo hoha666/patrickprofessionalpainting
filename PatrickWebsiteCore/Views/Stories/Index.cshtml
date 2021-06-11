@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PatrickWebsiteCore.Data.Story>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class=" col-12 border p-3">
+
+    <table id="DT_Load" class="table table-striped table-bordered" style="width=100%">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Slogan
+                </th>
+                <th>
+                    Tags
+                </th>
+                <th>
+                    IconURL
+                </th>
+                <th>
+                    PicURL
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+
+</div>
+
+@section Scripts{
+    <script src="~/js/mine/storyList.js"></script>
+}

@@ -1,0 +1,56 @@
+﻿@model PatrickWebsiteCore.Data.GalleryItem
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>GalleryItem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display:none">
+                <label asp-for="UrlText" class="control-label"></label>
+                <input asp-for="UrlText" class="form-control" value="inja" />
+                <span asp-validation-for="UrlText" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display:none">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" value="img" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display:none" >
+                <label asp-for="Created" class="control-label"></label>
+                <input asp-for="Created" class="form-control" value="2020-11-02T16:03"/>
+                <span asp-validation-for="Created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GalleryId" class="control-label"></label>
+                <select asp-for="GalleryId" class="form-control" asp-items="ViewBag.GalleryId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUpload" class="control-label"></label>
+                <input asp-for="ImageUpload" class="form-control" />
+                <span asp-validation-for="ImageUpload" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

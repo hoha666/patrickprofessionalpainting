@@ -1,0 +1,172 @@
+﻿@model HomePageViewModel;
+@{ ViewData["Title"] = Model.siteTitle; }
+
+<div id="content">
+    <div class="container container--is-maxwidth">
+        <section class="container hero hero--stage hero--bottom hero--left hero--video" v-heroanim>
+            <div class="hero__video image image--hero">
+                <video-lazy>
+                    <video controls="controls" autoplay loop muted playsinline>
+                        <source src="https://patrickpainting.com.au/images/home/mainvideo/silde1.mp4" type="video/mp4" /> <!--MUST MP4-->
+                    </video>
+                </video-lazy>
+            </div>
+            <div class="hero__container container--medium">
+                <div class="hero__content" data-tag-wrapper>
+                    <h1 class="hero__title halesworth" style="letter-spacing:10px !important;">
+                        Patrick
+                    </h1><br />
+                    <h3 class=" halesworth" style="padding-left: 30px;color: azure;letter-spacing: 7px;">Professional</h3><br />
+                    <h1 class="hero__title halesworth" style="padding-left: 60px;  letter-spacing: 10px !important;">
+                        Painting <span style="text-indent: 50px;text-align: justify;font-size: 12px;letter-spacing: 3px !important;">Pty Ltd</span>
+                    </h1>
+
+                    <span class="btn__wrapper23" style="border-radius:10px; background-color:#1a1818; color:white;">
+                        &nbsp;&nbsp;&nbsp;More than 12 years of experience&nbsp;&nbsp;&nbsp;
+                    </span>
+
+
+                </div>
+            </div>
+
+
+        </section>
+        @*Search Box*@
+        <section class="search-box container--large">
+            <div id="announce" aria-live="assertive" class="is-sr-only">
+                <span>0</span> suggestions found, to
+                navigate use up and down arrows
+            </div>
+            <div class="container--small search-box__content">
+                <label for="site-search" class="search-box__top">*** <span style="color: black;font-weight:400;">FREE QUOTE</span> *** </label>
+                <label for="site-search" class="search-box__top">
+                    <a href="tel:0424546240" style="color:blue;"> 0424546240 </a>&nbsp;<a href="tel:1800261122" style="color:blue;"> 1800261122 </a><label for="site-search" class="search-box__top">
+                        <!--<div class="search-box__bottom">
+                        <input placeholder="your search..." type="search" name="q" role="combobox" aria-autocomplete="both" aria-owns="suggested-list" autocomplete="off" class="search-box__input" />
+                        <input type="hidden" name="country" value="global" />
+                        <input type="hidden" name="language" value="en"><button type="submit" class="btn search-box__submit" />
+                        <span class="icon icon-search"></span>-->
+                        <!--<div id="search-field-error" class="search-box__error">
+                                <div class="search-box__error--content">
+                                    Enter 3 or more characters
+                                </div>
+                            </div>
+
+                        </div>-->
+            </div>
+        </section>
+
+        @*Customer Satisfaction*@
+        <div class="container--large " id="customerStory">
+            <scroll-slider class="scroll-slider--advanced" close-text="Close">
+                <div slot="sidecontent">
+                    <h2 class="scroll-slider__heading">
+                        <span class="scroll-slider__sub-title halesworth">Discover</span>
+                        <span class="scroll-slider__title">Commercial residential</span>
+                    </h2>
+
+                    <div class="scroll-slider__copy">
+                        <p>
+                            Patrick’s Professional Painting has set
+                            itself the mission of offering all places the best of design innovation in
+                            terms of quality, efficacy and safety. Here is a close-up on the Group’s
+                            latest stories.
+                        </p>
+                    </div>
+                </div>
+
+
+                <template v-slot="props">
+                    @for (int i = 0; i < Model.stories.Count; i++)
+                    {
+        <div class="scroll-slider__slide">
+            <div class="card card--simple" data-tag-wrapper>
+                <responsive-image class="image image--slideCard">
+                    <img src="@Model.stories[i].IconURL" alt="@Model.stories[i].Title">
+                </responsive-image>
+                <div class="card__text">
+                    <p class="card__title">
+                        @Model.stories[i].Title
+                    </p>
+                </div>
+                <a href="/showstory/@Model.stories[i].id.ToString()" data-tag-action="select::simple card" target="_blank" rel="nofollow"
+                   data-tag-category="content" class="ghost-link" data-tag-label="See More::#"
+                   v-tag:useractionevent.dom="">
+                    <div class="off-screen">@Model.stories[i].Slogan</div>
+                </a>
+            </div>
+        </div>}
+                </template>
+
+            </scroll-slider>
+        </div>
+
+        @*<here>*@
+        @*Projects*@
+        <div class="hbl-wrapper1">
+            <div class="container--large " id="projects" style="">
+                <scroll-slider class="scroll-slider--advanced" close-text="Close">
+                    <div slot="sidecontent">
+                        <h2 class="scroll-slider__heading">
+                            <span class="scroll-slider__sub-title halesworth">Discover</span> <span class="scroll-slider__title">interior  exterior</span>
+                        </h2>
+                    </div>
+                    <template v-slot="props">
+                        @for (int j = 0; j < Model.projects.Count; j++)
+                        {
+            <div class="scroll-slider__slide">
+                <div itemscope="itemscope" class="card card--article">
+                    <div class="image image--slideCard">
+                        <div class="responsive-image__media">
+                            <img src="@Model.projects[j].IconURL">
+                        </div>
+                    </div>
+                    <div class="card__text">
+                        <p class="card__topic">
+                            @Model.projects[j].Title
+                        </p>
+                        <p itemprop="name" class="card__title">
+                            @Model.projects[j].Brief
+                        </p>
+                    </div> <a href="~/ShowProject/@Model.projects[j].id" class="ghost-link">
+                        <span class="off-screen">
+                            @Model.projects[j].Title
+                        </span>
+                    </a>
+                </div>
+            </div>
+}
+                    </template>
+                </scroll-slider>
+
+            </div>
+        </div>
+        @*Context*@
+        @*<div class="container--large --white --margin-small"></div>*@
+    </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="customers-testimonials" class="owl-carousel">
+
+                    @for (int i = 0; i < Model.testimonials.Count; i++)
+                    {
+        <div class="item">
+            <div class="shadow-effect">
+                <p>
+                    @Model.testimonials[i].SingleWord;
+                </p>
+            </div>
+            <div class="testimonial-name">@Model.testimonials[i].Title</div>
+        </div>}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,24 @@
+﻿
+ /* Style Content-BlackCard */ 
+#black {
+  background-color: black;
+  color: white;
+  padding-left: 100px;
+  padding-top: 50px;
+  padding-bottom: 200px;
+}
+
+ /* Style Content-Circles */
+#round {
+ height:150px;
+ padding-top: 30px;
+ padding-left: 200px;
+ position: absolute; /* Position the background */
+ bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+ background: darkslategray;
+ opacity: 0.9;
+ width: 100%;
+ margin-left:-15px;
+}
+
+

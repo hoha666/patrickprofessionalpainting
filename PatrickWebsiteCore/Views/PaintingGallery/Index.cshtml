@@ -1,0 +1,85 @@
+﻿@model List<PatrickWebsiteCore.Data.Gallery>;
+@{ ViewData["Title"] = "Gallery";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div id="contenth">
+
+
+    <div class="container container--is-maxwidth">
+
+        <section class="container hero hero--stage hero--bottom hero--left" v-heroanim>
+            <responsive-image class="image image--hero hero__image">
+                <!-- Accessibility -->
+                <img src="~/images/paintinggallery.jpg" alt="" class="image image--hero hero__image">
+            </responsive-image>
+            <div class="hero__container container--medium">
+                <div class="hero__content" data-tag-wrapper>
+                    <h1 class="hero__title halesworth">
+                        Gallery
+                    </h1>
+                </div>
+            </div>
+        </section>
+
+        <div class="container--large ">
+            <div class="container--medium">
+
+                <div class="copy-block container--small content" v-animate="{ cssClass: 'fadein--bottom' }">
+                    <div class="copy-block__title copy-block--fullwidth">
+                        @*<h3 class="heading--2 --serif" style="text-align: center;">Our Global Brands Portfolio</h3>*@
+                        <br />
+                        <br />
+                        <div style="text-align: center; padding-bottom: 30px;"><img alt="Patrick Professional Painting samples" src="~/images/patrick.png" style="height:auto;margin: 0px auto;" /></div>
+                        <table style="width: 100%; text-align: center;">
+                            <tbody>
+                                @for (int i = 0; i < ((Model.Count) / 3) + 1; i++)
+                                {
+                                    <tr>
+                                    @for (int j = 0; j < 3 && (i * 3) + j < Model.Count; j++)
+                                    {
+                                        @*<td><a href="@Model[(i*3)+j].UrlText"><img alt="loreal-paris-logo" src="@Model[(i*3)+j].IconURL" /></a></td>*@
+
+                                        <td style="padding-bottom:30px;">
+
+                                            <div class="card card--simple" data-tag-wrapper>
+                                                <responsive-image class="image image--slideCard">
+                                                    <img src="@Model[(i*3)+j].IconURL" alt="@Model[(i*3)+j].Title">
+                                                </responsive-image>
+                                                <div class="card__text">
+                                                    <p class="card__title">
+                                                        @Model[(i * 3) + j].Title
+                                                    </p>
+                                                </div>
+                                                @*@Html.ActionLink( "<div class='off-screen'> " + Model[(i * 3) + j].Title + " </div> ", "Index", "ShowGallery", new { UrlText = Model[(i * 3) + j].UrlText }, null)*@
+                                                <a href="/ShowGallery/Index?UrlText=@Model[(i*3)+j].UrlText" data-tag-action="select::simple card" target="_blank" rel="nofollow"
+                                                   data-tag-category="content" class="ghost-link" data-tag-label="See More::#"
+                                                   v-tag:useractionevent.dom="">
+                                                    <div class="off-screen">@Model[(i * 3) + j].Title</div>
+                                                </a>
+                                            </div>
+
+                                        </td>
+
+
+
+
+                                    }
+                                    </tr>
+                                }
+                                @*<tr>
+                                    <td><a href="/en/consumer-products-division/dark-and-lovely/"><img alt="darklovely-logo" src="~/images/Stories/asd1233.jpg" /></a></td>
+                                    <td><a href="/en/consumer-products-division/niely/"><img alt="miely-logo" src="~/images/Stories/asd1233.jpg" /></a></td>
+                                    <td>
+                                        <iframe width="100%" height="640" style="width: 100%; height: 640px; border: none; max-width: 100%;" frameborder="0" allowfullscreen allow="xr-spatial-tracking; gyroscope; accelerometer" scrolling="no" src="https://kuula.co/share/7MyYw?fs=1&vr=0&sd=1&thumbs=1&info=1&logo=1"></iframe>
+                                    </td>
+                                </tr>*@
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

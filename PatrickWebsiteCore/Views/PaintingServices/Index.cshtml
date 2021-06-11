@@ -1,0 +1,106 @@
+﻿@model List<PatrickWebsiteCore.Data.Project>;
+@{ ViewData["Title"] = "Gallery";
+    Layout = "~/Views/Shared/_Layout_Gallery.cshtml"; }
+
+<div class="container container--is-maxwidth">
+    <section class="container hero hero--stage hero--bottom hero--left" v-heroanim>
+        <responsive-image class="image image--hero hero__image">
+            <img src="~/images/services.jpg" alt="" class="image image--hero hero__image">
+        </responsive-image>
+        <div class="hero__container container--medium">
+            <div class="hero__content" data-tag-wrapper>
+                <h1 class="hero__title halesworth">
+                    Services
+                </h1>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container--large ">
+    <div class="container--medium">
+        <div class="copy-block container--small content" v-animate="{ cssClass: 'fadein--bottom' }">
+            <div class="copy-block__title">
+                <p>For discuss your painting requirements; as professional painter we deliver peace of mind with superior workmanship, finishes and service &ndash; we guarantee it.</p>
+                <p>Your property is valuable asset and a quality paint job is one of the best ways to protect it.</p>
+                <p>As caring professionals we offer you :</p>
+            </div>
+            <div class="copy-block__text">
+                <p>Interior :</p>
+                <p>All surfaces to be painted will be washed or dusted down, any loose/flaking paint will be removed, minor holes or cracks filled. All new timber, plaster &amp; repairs will be sealed. All surfaces will then be lightly sanded prior to finish coats.</p>
+                <p><br></p>
+                <p>Exterior :</p>
+                <p>All surfaces to be painted will be washed and/or dusted down, any loose/flaking paint will be removed, any small holes or small cracks filled. Any new timber or old timber that is not pre primd or bare timber will be primed; any rust or corrosion will be treated where applicable. Any bare metal surfaces will be primed. All surfaces will then be lightly sanded prior to finish coats.</p>
+                <p><br></p>
+                <p><br></p>
+                <p>Finished with 2-3 coats&nbsp;</p>
+                <p>Finishing with spray or manual ( brush and roll )&nbsp;</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<scroll-slider class="scroll-slider--advanced" close-text="Close">
+    <div slot="sidecontent">
+        <h2 class="scroll-slider__heading">
+            <span class="scroll-slider__sub-title halesworth">Be Inspired</span>
+            <span class="scroll-slider__title">Pushing the Boundaries</span>
+        </h2>
+        <div class="scroll-slider__copy">
+            <p>
+                Thanks to our teams who are working in a high level of precission, Our projects are to ensure the quality and sustainability and guarantee our customers&rsquo; safety and satisfaction.
+            </p>
+        </div>
+    </div>
+
+    <template v-slot="props">
+        @for (int j = 0; j < Model.Count; j++)
+        {
+<div class="scroll-slider__slide">
+    <div itemscope="itemscope" class="card card--article">
+        <div class="image image--slideCard">
+            <div class="responsive-image__media">
+                <img src="@Model[j].IconURL" />
+            </div>
+        </div>
+        <div class="card__text">
+            <p class="card__topic">
+                @Model[j].Title
+            </p>
+            <p itemprop="name" class="card__title">
+                @Model[j].Brief
+            </p>
+        </div>
+        <a href="~/ShowProject/@Model[j].id" class="ghost-link">
+            <span class="off-screen">
+                @Model[j].Title
+            </span>
+        </a>
+
+    </div>
+</div>}
+    </template>
+
+</scroll-slider>
+
+@*<div class="container--large ">
+        <div class="container--medium">
+            <div class="copy-block container--small content" v-animate="{ cssClass: 'fadein--bottom' }">
+                <div class="copy-block__title">
+                    <h2 class="heading--2 --serif">Science, Nature &amp; Technology &ndash; the perfect combination for reinventing Beauty</h2>
+                    <p class="normal">At L&rsquo;Or&eacute;al, we have always drawn inspiration from <strong>nature</strong>. Understanding nature&rsquo;s mechanisms enables us to develop more environmentally-friendly production processes. We create formulas based on&nbsp;natural ingredients or ingredients of natural origin, and that in either case respect the environment. To meet these challenges, we have developed a recognized expertise based on a pact between science and nature, Green Sciences. </p>
+                </div>
+                <div class="copy-block__text">
+                    <p>Green Sciences allow us to innovate permanently, and at every stage of a product&rsquo;s life cycle:</p>
+                    <ul>
+                        <li><strong>Production of natural raw materials</strong> through innovative techniques (permaculture, agroforestry and biodynamics).</li>
+                        <li><strong>Production of effective natural ingredients or ingredients of natural origin</strong> using biotechnology (plant cell culture, bacterial fermentation and enzyme catalysis), environmentally-friendly transformation, extraction or fermentation processes, and green chemistry.</li>
+                        <li><strong>Green formulation</strong> by combining ingredients to produce formulas which deliver a unique technical performance and sensory experience in the eyes of our consumers. The use of natural ingredients and ingredients of natural origin, produced by green cultivation and green transformation, is fundamental to green formulation.</li>
+                    </ul>
+                    <p>Technology is another limitless source of <strong>inspiration </strong>and has profoundly changed the way we interact with Beauty and cosmetics. This is why, at L&rsquo;Or&eacute;al, we fully embrace innovations that push the boundaries of science and reinvent Beauty and cosmetic rituals. With the help of Augmented Reality, Artificial Intelligence and data processing, we can now tailor Beauty experiences to every one of our customer&rsquo;s needs, offering a wide range of creative solutions. Thanks to these advances, ideas are becoming a reality and we&rsquo;re proud to be such a leading voice in this Beauty revolution.</p>
+                </div>
+            </div>
+        </div>
+    </div>*@

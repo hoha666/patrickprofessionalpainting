@@ -1,0 +1,278 @@
+﻿@model PatrickWebsiteCore.Data.Project
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+}
+@section MyStyles {
+<style>
+    body {
+        font-family: Verdana, sans-serif;
+        margin: 0;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .row > .column {
+        padding: 0 8px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .column {
+        float: left;
+        width: 25%;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: black;
+    }
+
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        width: 90%;
+        max-width: 1200px;
+    }
+
+    /* The Close Button */
+    .close {
+        color: white;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #999;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .mySlides {
+        display: none;
+    }
+
+    .cursor {
+        cursor: pointer;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    img {
+        margin-bottom: -4px;
+    }
+
+    .caption-container {
+        text-align: center;
+        background-color: black;
+        padding: 2px 16px;
+        color: white;
+    }
+
+    .demo {
+        opacity: 0.6;
+    }
+
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+
+    img.hover-shadow {
+        transition: 0.3s;
+    }
+
+    .hover-shadow:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+</style>
+}
+    <h1>Create</h1>
+
+    <h4>Project</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-8">
+            <form asp-action="Create" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Brief" class="control-label"></label>
+                    <input asp-for="Brief" class="form-control" />
+                    <span asp-validation-for="Brief" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Introduction" class="control-label"></label>
+                    <textarea asp-for="Introduction" class="form-control" rows="10" cols="60"></textarea>
+                    <span asp-validation-for="Introduction" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StartDate" class="control-label"></label>
+                    <input asp-for="StartDate" class="form-control" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EndDate" class="control-label"></label>
+                    <input asp-for="EndDate" class="form-control" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IconUpload" class="control-label"></label>
+                    <input asp-for="IconUpload" class="form-control" />
+                    <span asp-validation-for="IconUpload" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PicUpload" class="control-label"></label>
+                    <input asp-for="PicUpload" class="form-control" />
+                    <span asp-validation-for="PicUpload" class="text-danger"></span>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <input autocomplete="off" type="button" value="Create Project" class="btn btn-success" id="createButton" onclick="PushData()" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+        <script type="text/javascript">
+	function PushData() {
+		var formData = new FormData();
+        if ($('#Title').val() != 'undefined')
+		{
+            formData.append('Title', $('#Title').val());
+		}
+        if ($('#Brief').val() != 'undefined')
+		{
+            formData.append('Brief', $('#Brief').val());
+        }
+        if ($('#Introduction').val() != 'undefined') {
+            formData.append('Introduction', $('#Introduction').val());
+        }
+        if ($('#StartDate').val() != 'undefined') {
+            alert($('#StartDate').val());
+            formData.append('StartDate', $('#StartDate').val());
+        }
+        if ($('#EndDate').val() != 'undefined') {
+            formData.append('EndDate', $('#EndDate').val());
+        }
+        if ($('#IconUpload').val() != 'undefined')
+		{
+            var file = document.getElementById('IconUpload').files[0];
+            formData.append('IconUpload', file);
+        }
+        if ($('#PicUpload').val() != 'undefined') {
+            var file = document.getElementById('PicUpload').files[0];
+            formData.append('PicUpload', file);
+        }
+
+
+		$.ajax({
+			type: "POST",
+			url: "/projects/create",
+			data: formData,
+			processData: false,
+			contentType: false,
+			success: function (data) {
+				data = JSON.parse(data);
+				alert(data.message);
+				if (data.success) {
+					$("input[type='text']").val('');
+				}
+				@*@Html.Raw(act == "Index" ? "$('.grid').RefreshData();" : "")*@
+			},
+			error: function (jqXHR, exception) {
+				var msg = "";
+				if (jqXHR.status === 0)
+					msg = 'ارتباط قطع می باشد';
+				else if (jqXHR.status === 404)
+					msg = 'ارتباط قطع می باشد';
+				else if (jqXHR.status === 404)
+					msg = 'مسیر درخواست اشتباه است';
+				else if (jqXHR.status === 500)
+					msg = 'خطا فنی';
+				else if (exception === 'parsererror')
+					msg = 'فرمت اطلاعات صحیح نمی باشد';
+				else if (exception === 'timeout')
+					msg = 'خطا در مدت زمان انجام عملیات';
+				else if (exception === 'abort')
+					msg = 'درخواست رد شده است';
+				else
+					msg = jqXHR.responseText;
+				alert(msg);
+
+			}
+		});
+	}
+        </script>
+
+    }

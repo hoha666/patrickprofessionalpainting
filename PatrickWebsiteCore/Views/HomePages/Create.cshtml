@@ -1,0 +1,85 @@
+﻿@model PatrickWebsiteCore.Data.HomePage
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>HomePage</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SiteName" class="control-label"></label>
+                <input asp-for="SiteName" class="form-control" />
+                <span asp-validation-for="SiteName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainVideoURL" class="control-label"></label>
+                <input asp-for="MainVideoURL" class="form-control" />
+                <span asp-validation-for="MainVideoURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrandsVideoURL" class="control-label"></label>
+                <input asp-for="BrandsVideoURL" class="form-control" />
+                <span asp-validation-for="BrandsVideoURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FavIconURL" class="control-label"></label>
+                <input asp-for="FavIconURL" class="form-control" />
+                <span asp-validation-for="FavIconURL" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="SiteSlogan" class="control-label"></label>
+                <input asp-for="SiteSlogan" class="form-control" />
+                <span asp-validation-for="SiteSlogan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteTitle" class="control-label"></label>
+                <input asp-for="SiteTitle" class="form-control" />
+                <span asp-validation-for="SiteTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteMeta" class="control-label"></label>
+                <input asp-for="SiteMeta" class="form-control" />
+                <span asp-validation-for="SiteMeta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OgTitle" class="control-label"></label>
+                <input asp-for="OgTitle" class="form-control" />
+                <span asp-validation-for="OgTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OgType" class="control-label"></label>
+                <input asp-for="OgType" class="form-control" />
+                <span asp-validation-for="OgType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OgImageURL" class="control-label"></label>
+                <input asp-for="OgImageURL" class="form-control" />
+                <span asp-validation-for="OgImageURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OgSiteURL" class="control-label"></label>
+                <input asp-for="OgSiteURL" class="form-control" />
+                <span asp-validation-for="OgSiteURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

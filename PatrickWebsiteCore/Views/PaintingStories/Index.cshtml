@@ -1,0 +1,68 @@
+﻿@model List<PatrickWebsiteCore.Data.Story>;
+@{
+    ViewData["Title"] = "Stories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="contenth">
+
+
+    <div class="container container--is-maxwidth">
+
+        <section class="container hero hero--stage hero--bottom hero--left" v-heroanim>
+
+            <responsive-image class="image image--hero hero__image">
+
+                <!-- Accessibility -->
+                <img src="~/images/Stories.jpg" alt="" class="image image--hero hero__image">
+
+            </responsive-image>
+            <div class="hero__container container--medium">
+                <div class="hero__content" data-tag-wrapper>
+                    <h1 class="hero__title halesworth">
+                        Stories
+                    </h1>
+                </div>
+            </div>
+
+
+        </section>
+
+        @for (int i = 0; i < Model.Count; i++)
+        {
+
+            if (i % 2 == 0)
+            {
+                @:<div class="row">
+                }
+                <div class="">
+                    <div class="card card--simple" data-tag-wrapper>
+                        <responsive-image class="image image--slideCard">
+                            <img src="@Model[i].IconURL" alt="@Model[i].Title">
+                        </responsive-image>
+                        <div class="card__text">
+                            <p class="card__title">
+                                @Model[i].Title
+                            </p>
+                        </div>
+                        <a href="/showstory/@Model[i].id.ToString()" data-tag-action="select::simple card" target="_blank" rel="nofollow"
+                           data-tag-category="content" class="ghost-link" data-tag-label="See More::#"
+                           v-tag:useractionevent.dom="">
+                            <div class="off-screen">@Model[i].Slogan</div>
+                        </a>
+                    </div>
+
+
+                </div>
+                if (i % 2 == 0)
+                {
+                @:</div>
+            }
+        }
+
+
+    </div>
+</div>
+
+
+

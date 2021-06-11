@@ -1,0 +1,135 @@
+﻿@model PatrickWebsiteCore.Data.Story
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Story</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slogan" class="control-label"></label>
+                <input asp-for="Slogan" class="form-control" />
+                <span asp-validation-for="Slogan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainHtml" class="control-label"></label>
+                <textarea asp-for="MainHtml" class="form-control" rows="10" cols="60"></textarea>
+                <span asp-validation-for="MainHtml" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Created" class="control-label"></label>
+                <input asp-for="Created" class="form-control" />
+                <span asp-validation-for="Created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tags" class="control-label"></label>
+                <input asp-for="Tags" class="form-control" />
+                <span asp-validation-for="Tags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IconUpload" class="control-label"></label>
+                <input asp-for="IconUpload" class="form-control" />
+                <span asp-validation-for="IconUpload" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PicUpload" class="control-label"></label>
+                <input asp-for="PicUpload" class="form-control" />
+                <span asp-validation-for="PicUpload" class="text-danger"></span>
+            </div>
+            <div class="col-sm-12 form-group">
+                <input autocomplete="off" type="button" value="Add Story" class="btn btn-success" id="createButton" onclick="PushData()" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+	function PushData() {
+		var formData = new FormData();
+        if ($('#Title').val() != 'undefined')
+		{
+            formData.append('Title', $('#Title').val());
+		}
+        if ($('#Slogan').val() != 'undefined')
+		{
+            formData.append('Slogan', $('#Slogan').val());
+        }
+        if ($('#MainHtml').val() != 'undefined') {
+            formData.append('MainHtml', $('#MainHtml').val());
+        }
+        if ($('#Created').val() != 'undefined') {
+            formData.append('Created', $('#Created').val());
+        }
+        if ($('#Tags').val() != 'undefined') {
+            formData.append('Tags', $('#Tags').val());
+        }
+        if ($('#IconUpload').val() != 'undefined')
+		{
+            var file = document.getElementById('IconUpload').files[0];
+            formData.append('IconUpload', file);
+        }
+        if ($('#PicUpload').val() != 'undefined') {
+            var file = document.getElementById('PicUpload').files[0];
+            formData.append('PicUpload', file);
+        }
+
+
+		$.ajax({
+			type: "POST",
+			url: "/stories/create",
+			data: formData,
+			processData: false,
+			contentType: false,
+			success: function (data) {
+				data = JSON.parse(data);
+				alert(data.message);
+				if (data.success) {
+					$("input[type='text']").val('');
+				}
+				@*@Html.Raw(act == "Index" ? "$('.grid').RefreshData();" : "")*@
+			},
+			error: function (jqXHR, exception) {
+				var msg = "";
+				if (jqXHR.status === 0)
+					msg = 'ارتباط قطع می باشد';
+				else if (jqXHR.status === 404)
+					msg = 'ارتباط قطع می باشد';
+				else if (jqXHR.status === 404)
+					msg = 'مسیر درخواست اشتباه است';
+				else if (jqXHR.status === 500)
+					msg = 'خطا فنی';
+				else if (exception === 'parsererror')
+					msg = 'فرمت اطلاعات صحیح نمی باشد';
+				else if (exception === 'timeout')
+					msg = 'خطا در مدت زمان انجام عملیات';
+				else if (exception === 'abort')
+					msg = 'درخواست رد شده است';
+				else
+					msg = jqXHR.responseText;
+				alert(msg);
+
+			}
+		});
+	}
+    </script>
+
+}

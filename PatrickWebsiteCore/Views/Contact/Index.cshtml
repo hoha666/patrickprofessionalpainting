@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Contact Page";
+}
+
+<div id="content">
+
+
+    <div class="container container--is-maxwidth">
+
+        <section class="container hero hero--stage hero--bottom hero--left" v-heroanim>
+
+            <responsive-image class="image image--hero hero__image">
+
+                <!-- Accessibility -->
+                <img src="~/images/contact-us.jpg" alt="" class="image image--hero hero__image">
+
+            </responsive-image>
+            <div class="hero__container container--medium">
+                <div class="hero__content" data-tag-wrapper>
+                    <h1 class="hero__title halesworth">
+                        Contact Us
+                    </h1>
+                </div>
+            </div>
+
+
+        </section>
+
+        <div class="container--large ">
+            <div class="container--mediumqwe">
+                <div class="copy-block container--small content" v-animate="{ cssClass: 'fadein--bottom' }">
+                    <div class="copy-block__title">
+                        <!--The div element for the map -->
+                        <div style="margin-right:30px;padding-right:20px; border-radius:10px;">
+                            @*osid=fcb4ff9d-fdd5-4f8e-bc5f-571cda05756b&cp=-37.81308~145.154614&lvl=18&v=2&sV=2&form=S00027*@
+                            <iframe width="600" height="400" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=500&osid=fcb4ff9d-fdd5-4f8e-bc5f-571cda05756b&cp=-37.81348012539648~145.15630161075552&lvl=17&typ=d&sty=r&src=SHELL&FORM=MBEDV8" scrolling="no">
+                            </iframe>
+                            <div style="white-space: nowrap; text-align: center; width: 500px; padding: 6px 0;">
+                                <a id="largeMapLink" target="_blank" href="https://www.bing.com/maps?cp=-37.81348012539648~145.15630161075552&amp;sty=r&amp;lvl=18&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
+                                <a id="dirMapLink" target="_blank" href="https://www.bing.com/maps?osid=fcb4ff9d-fdd5-4f8e-bc5f-571cda05756b&cp=-37.81308~145.154614&lvl=18&v=2&sV=2&form=S00027">Get Directions</a>
+                            </div>
+                        </div>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;
+                    <div class="copy-block__text">
+                        <h3>Address:</h3>
+                        <p>P.O BOX 1043 hawksburn 3142 - Melbourne</p>
+                        <h3>Telephone & Email</h3>
+                        <p>
+                            <a href="tel:1800261122">1800261122</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:info@patrickpainting.com.au"> info@patrickpainting.com.au </a>
+                        </p>
+                        <h3> Mobile Number </h3>
+                        <p> <a href="tel:0424546240">0424546240</a></p>
+                        <!-- <h3> Email </h3>
+                        <p> <a href="mailto:info@patrickpainting.com.au">info@patrickpainting.com.au</a></p> -->
+                        <h3> Be with us in our social network </h3>
+                        <!-- <div class="footer__bottom container--medium "> -->
+                        <ul class="footer__social " style="list-style: none;">
+                            <li class="footer__item footer__item--social">
+                                <a href="https://www.facebook.com/patrickpainting.com.au/" target="_blank " class="social-icon">
+                                    <span class="icon icon-facebook " aria-hidden="true"></span><span class="off-screen ">facebook</span>
+                                </a>
+                            </li>
+                            <li class="footer__item footer__item--social">
+                                <a href="# " target="_blank " class="social-icon">
+                                    <span class="icon icon-twitter " aria-hidden="true"></span><span class="off-screen ">twitter</span>
+                                </a>
+                            </li>
+                            <li class="footer__item footer__item--social ">
+                                <a href="https://instagram.com/patrickpainting.pty.ltd?igshid=15mxp0gdlii3v" target="_blank " class="social-icon">
+                                    <span class="icon icon-instagram " aria-hidden="true"></span><span class="off-screen ">instagram</span>
+                                </a>
+                            </li>
+                            <li class="footer__item footer__item--social">
+                                <a href="# " target="_blank " class="social-icon">
+                                    <span class="icon icon-linkedin " aria-hidden="true"></span><span class="off-screen ">linkedin</span>
+                                </a>
+                            </li>
+                            <li class="footer__item footer__item--social">
+                                <a href="# " target="_blank " class="social-icon">
+                                    <span class="icon icon-youtube " aria-hidden="true"></span><span class="off-screen ">youtube</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

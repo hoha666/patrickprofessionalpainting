@@ -1,0 +1,67 @@
+﻿@model IEnumerable<PatrickWebsiteCore.Data.HomePage>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_Dashboard.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    @*<a asp-action="Create">Create New</a>*@
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SiteName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SiteSlogan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SiteTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SiteMeta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OgTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OgType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiteName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiteSlogan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiteTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiteMeta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OgTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OgType)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
